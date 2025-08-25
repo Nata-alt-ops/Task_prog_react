@@ -1,0 +1,474 @@
+@use '@fontsource/inter';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+$color_main:#78B5D4;
+$color_main1:#CFD8DB;
+$color_main2:#f38393;
+$color_main3:#FB6969;
+$color_main4:#fc8383;
+$color_main5:#ffffff;
+$color_main6:#d35959;
+$color_main7:#dd7e7e;
+$color_main8:#001233;
+$color_main9:#001845;
+$color_main10:#002855;
+$color_main11:#33415C;
+$color_main12:#d6d6fc;
+$color_main13:#2a2a3a;
+$color_main14:#aaaac4;
+$color_main15:#555555;
+$color_main16:#000000;
+$color_main17:#ac4a4a;
+$color_main18:#e27575;
+
+@mixin flex_con{
+    display: flex;
+    align-items: center;
+}
+@mixin list{
+    width: 90%;
+    max-width: 500px;
+    min-width: 300px;
+    height: auto;
+    margin-top: 100px;
+    margin: 100px auto;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    overflow: hidden; 
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+@mixin title_light_dark{
+    height: 100px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0px auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+@mixin title_list{
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 400;
+}
+
+@mixin new_task_input_button{
+    width: 100%;
+    max-width: 500px;
+    margin: 0px auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+@mixin new_task_input{
+    border-radius: 5px 0px 0px 5px;
+    border: none;
+    flex:1;
+    min-width: 0;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+
+@mixin filters_button_text{
+    font-family: 'Inter';
+    font-size: 12px;
+    padding: 0 10px;
+    /*text-align: center;*/
+};
+
+@mixin task_text{
+    font-family: 'Inter';
+    /*font-size: 15px;*/
+    font-size:clamp(10px, 4vw, 15px);
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+
+@mixin list_task{
+   width: calc(100% - 60px);
+   margin: 0px auto;
+   padding: 0 30px;
+   background-color: $color_main4;
+   margin-bottom: 5px;
+   padding-left: 30px;
+   padding-right: 30px;
+   position: relative;
+   box-sizing: border-box;
+   border-radius: 5px;
+}
+
+
+body {
+    background-image: linear-gradient(to right,
+      $color_main 0%,
+      $color_main1 50%,
+      $color_main2 100%);
+    background-attachment: fixed;
+}
+
+.site_con {
+    width: 100%;
+    height: auto;
+
+    .list_con {
+        width: 100%;
+        height: auto;
+
+        .list {
+            @include list();
+            background-color: $color_main3;
+            box-sizing: border-box;
+
+            .title_light_dark {
+                @include flex_con();
+                @include title_light_dark();
+                justify-content: space-between;
+                gap: clamp(20px, 4vw, 100px);
+                
+                .list_title {
+                    @include title_list();
+                    position: relative;
+                    color: $color_main5;  
+                }
+                
+                .light_dark {
+                    @include flex_con();
+                    margin-top: 30px;
+                    margin-left: 30px;
+                    margin-bottom: 30px;
+                    gap: 5px;
+    
+                    svg {
+                        border-radius: 5px;
+                        background-color: $color_main4;
+                        width: 50px;
+                        height: 30px;
+                        cursor: pointer;
+    
+                        &:hover {
+                            transform: scale(1.05);
+                            background-color: $color_main5;
+                        }
+                    }
+                }
+            }
+            
+            .new_task {
+                @include flex_con();
+                align-items: flex-start;
+                background-color: $color_main3;
+                flex-direction: column;
+                justify-content: space-between;
+              
+        
+                .input_button {
+                    @include flex_con();
+                    @include new_task_input_button();
+                    gap: 0;
+
+                    input {
+                        @include new_task_input();
+                        gap:0;
+                        
+                        &:active {
+                            border: none !important;
+                        }
+                    }
+                    
+                    button {
+                        border-radius: 0px 5px 5px 0px;
+                        flex-shrink: 0;
+                        min-width: 50px;
+                        height: 34px;
+                        margin-bottom: 20px;
+                        border: 1px solid $color_main5;
+                        background-color: $color_main3;
+                        color: $color_main5;
+                        cursor: pointer;
+        
+                        &:hover {
+                            background-color: $color_main5;
+                            color: $color_main3;
+                            border: 1px solid $color_main6;
+                        }
+                    }
+                }
+            }
+            
+            .filters {
+                @include flex_con();
+                justify-content: center;
+                width: calc(100% - 60px);
+                gap: 10px;
+                background-color: $color_main18;
+                max-width:440px;
+                margin:0 auto;
+                padding: 0;
+                height: 25px;
+                border-radius: 100px;
+                box-sizing: border-box;
+                margin-bottom: 10px;
+
+                
+
+                button {
+                    @include filters_button_text();
+                    flex: 1;
+                    min-width: 0;
+                    border: none;
+                    min-height: 25px;
+                    height: auto;
+                    background: none;
+                    color: $color_main5;
+                    cursor: pointer;
+                    border-radius: 100px;
+                    transition: color 0.2s ease, text-decoration 0.2s ease;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    
+                    &:hover, &.active {
+                        background-color: #ffffff;
+                        color: $color_main4;
+                    }
+                }
+            }
+
+            .list_task {
+                @include flex_con();
+                @include list_task();
+                justify-content: space-between;
+                overflow: hidden;
+                gap: 20px;
+
+
+                .drag_text_task{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0px;
+                    flex:1;
+                    min-width: 0;
+
+
+                }
+
+                .drag-handle {
+                   color: $color_main15;
+                   top: 28px;
+                   left: 10px;
+                   flex-shrink: 0;
+                   position: absolute;
+
+                   &:active {
+                    cursor: grabbing;
+                    color: $color_main17;
+                    }
+                }
+
+                .task_text {
+                    @include task_text();
+                    flex: 1;
+                    color: $color_main5;
+                    word-wrap: break-word;
+                    word-break: break-word;
+                    overflow-wrap: break-word;
+                    transition: color 0.2s ease, text-decoration 0.2s ease;
+                    min-width: 0; 
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                   
+
+                    &.completed {
+                        text-decoration: line-through;
+                        color: $color_main17;
+                    }
+
+                   
+
+                }
+                
+                .actions_icons {
+                    @include flex_con();
+                    gap: 15px;
+                    margin-right: 20px;
+
+                    .change_task {
+                        width: 18px;
+                        height: 18px;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: $color_main5;
+                        }
+                    }
+                    
+                    .delete_task {
+                        width: 18px;
+                        height: 18px;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: $color_main5;
+                        }
+                    }
+                }
+            }
+
+            .no-task{
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                color: $color_main17;
+            }
+        }
+
+        .edit-input-group {
+            @include flex_con();
+
+            input {
+                width: 150px;
+                height: 20px;
+                border: 1px solid $color_main3;
+                background-color: $color_main5;
+                border-radius: 0px;
+            }
+            
+            button {
+                width: 100px;
+                height: 22px;
+                border: none;
+                cursor: pointer;
+                background-color: $color_main7;
+                
+                &:hover {
+                    border: 1px solid $color_main5;
+                    background-color: $color_main3;
+                    color: $color_main5;
+                }
+            }
+        }
+    }
+}
+
+/* Темная тема*/
+body.dark_theme {
+    background-image: linear-gradient(to right,
+      $color_main8 0%,
+      $color_main9 50%,
+      $color_main10 100%);
+    background-attachment: fixed;
+
+    .site_con .list_con .list {
+        background-color: $color_main11;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+
+        .title_light_dark .list_title {
+            color: $color_main12;
+        }
+
+        .light_dark svg {
+            background-color: $color_main13;
+
+            &:hover {
+                background-color: $color_main5;
+            }
+        }
+
+        .filters {
+            background-color: $color_main13;
+
+            button {
+                background-color: $color_main13;
+                color: $color_main12;
+
+                &:hover, &.active {
+                    background-color: $color_main5;
+                    color: $color_main13;
+                }
+            }
+        }
+
+        .list_task {
+            background-color: $color_main13;
+
+            .task_text {
+                color: $color_main12;
+
+                &.completed {
+                    color: $color_main14;
+                }
+            }
+
+            .drag-handle {
+                    left: 10px;
+                    color: $color_main12;
+                }
+
+            }
+            .no-task{
+            color: $color_main5;
+        }
+
+        .new_task {
+            background-color: $color_main11;
+
+            .input_button {
+                input {
+                    background-color: $color_main13;
+                    color: $color_main5;
+                    border: 1px solid $color_main15;
+                }
+                
+                button {
+                    background-color: $color_main11;
+                    color: $color_main5;
+
+                    &:hover {
+                        background-color: $color_main5;
+                        color: $color_main11;
+                        border: 1px solid $color_main15;
+                    }
+                }
+            }
+        }
+
+        .edit-input-group {
+            input {
+                background-color: $color_main13;
+                color: white;
+                border: 1px solid $color_main15;
+            }
+            
+            button {
+                background-color: $color_main13;
+                color: white;
+                border: 1px solid $color_main15;
+
+                &:hover {
+                    background-color: #ffffff;
+                    color: #2a2a3a;
+                }
+            }
+        }
+
+        .actions_icons {
+            .change_task,
+            .delete_task {
+                color: $color_main12;
+
+                &:hover {
+                    color: $color_main5;
+                }
+            }
+        }
+    }
+}
+
