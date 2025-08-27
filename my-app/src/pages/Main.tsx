@@ -96,9 +96,6 @@ export const Main = () =>{
         setDraggedItem(id); //запоминает какой элемент перетаскивается 
     };
 
-    const handleDragOver = (e: any) => {
-        e.preventDefault(); //разрешаем бросать элементы
-    };
 
     const handleDrop = (e: any, targetId: number) => {
         e.preventDefault();
